@@ -209,19 +209,19 @@ After we have validated out data that the user has created lets go ahead and sav
 
 In the Web.php file where we were validating user inputs, go ahead and add code to save the task to the database once the data has been validated. See below.
 ```
-    $task = new Task;
-    $task->name = $request->name;
-    $task->save();
+  $task = new Task;
+  $task->name = $request->name;
+  $task->save();
 
-    return redirect('tasks');
+  return redirect('tasks');
 ```
 To be able to display the data to the user after the user has created the data, go on and change the `Web.php` route to reurn the form so as to be able to return the data that has been stored in the databas as well
 See below.
 ```
 Route::get('tasks', function () {
     
-$tasks = Task::orderBy('created_at', 'asc')->get();
-return view('tasks', [ ‘tasks’ => $tasks ] );
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+    return view('tasks', [ ‘tasks’ => $tasks ] );
 
 });
 
