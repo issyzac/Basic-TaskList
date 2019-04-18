@@ -26,14 +26,6 @@ Route::get('tasks', function () {
 
 });
 
-Route::get('home', function () {
-    return "This is home!";
-});
-
-Route::get('about', function () {
-   return View('about');
-});
-
 Route::post('/tasks', function (Request $request) {
 
     $validator = Validator::make($request->all(), [
@@ -53,5 +45,13 @@ Route::post('/tasks', function (Request $request) {
 
     return redirect('/');
 
+
+});
+
+Route::delete('/task/{task}', function (Task $task) {
+
+    $task->delete();
+
+    return redirect('tasks');
 
 });
