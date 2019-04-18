@@ -1,4 +1,5 @@
-# Apps & Girls Laravel Tutorials Sessions
+# Laravel Basic Task List Tutorial using Laravel 5.8
+## Prepared for Apps&Girls Laravel Tutorial Sessions
 
 The Goal is to build a basic Task List app using Laravel
 
@@ -267,4 +268,30 @@ Below the `div` with the form for user to create a new task add the following to
         </div>
     @endif
 
+```
+
+## Deleting a task from the databse
+
+in your file `tasks.blad.php` we had left a `TODO` to come back at to implement deleting the task, locate it and add the following implementation to give user a button to use to delete the task
+```
+<!-- Delete Button -->
+    <td>
+        <form action="{{ url('task/'.$task->id) }}" method="POST">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i> Delete
+            </button>
+        </form>
+    </td>
+```
+After head over to your Web.php file and add a route implementation to delete the task. notice in the form above for deleting the taks we have an `action` with `{{ url('task/'.$task->id) }}` this will tell Laravel to go to route `task/{task_id}` to be able to delete that particular task. Lets go ahead and create that implememtation.
+See below
+```
+Route::delete('/task/{task}', function (Task $task) {
+    $task->delete();
+
+    return redirect('tasks');
+});
 ```
