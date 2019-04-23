@@ -295,3 +295,13 @@ Route::delete('/task/{task}', function (Task $task) {
     return redirect('tasks');
 });
 ```
+## Adding a controller to our project
+
+Adding controller to out project will incorporate changes in multiple files so as to connect the controller to the entire flow of information within the project, remember `MVC`? The `View` sends an input to the `controller`, then `controller` queries data based on the users input from the `view` in the `Model` then `Model` returns the querried data back to `controkker` and `controller` sends that data back to the `view` and the `view` presents it to the user who has requested it.
+
+So go ahead and use `artisan` to create a new controller which we will call ~Task Controller~ using the command below
+
+```
+php artisan make:controller TaskController
+```
+
