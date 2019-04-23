@@ -297,11 +297,27 @@ Route::delete('/task/{task}', function (Task $task) {
 ```
 ## Adding a controller to our project
 
-Adding controller to out project will incorporate changes in multiple files so as to connect the controller to the entire flow of information within the project, remember `MVC`? The `View` sends an input to the `controller`, then `controller` queries data based on the users input from the `view` in the `Model` then `Model` returns the querried data back to `controkker` and `controller` sends that data back to the `view` and the `view` presents it to the user who has requested it.
+Adding controller to out project will incorporate changes in multiple files so as to connect the controller to the entire flow of information within the project, remember `MVC`? The `View` sends an input to the `controller`, then `controller` queries data based on the users input from the user in the `Model` then `Model` returns the querried data back to `controller` and `controller` sends that data back to the `view` and the `view` presents it to the user who has requested it.
 
-So go ahead and use `artisan` to create a new controller which we will call ~Task Controller~ using the command below
+So go ahead and use `artisan` to create a new controller which we will call *TaskController* using the command below
 
 ```
 php artisan make:controller TaskController
 ```
+
+After your controller file will be located in `app/Http/Controllers/TaskController.php`
+
+now that we have our controller file, we need to change all the implementations that we have placed inside our `routes/web.php` file to go to controller and leave the `web.php` file only for routing purposes
+
+Change the routes inside `web.php` to the following
+```
+Route::get('/tasks', 'TaskController@index');
+Route::post('/task', 'TaskController@store');
+Route::delete('/task/{task}', 'TaskController@destroy');
+```
+This show that we need to create, within our TaskController file three different funtions 
+1. `index` funtion that will return our base view
+2. `store` funtion which will be resposibe to storing data in the databse
+3. `delete` funtion which will do the deleting of the tasks we dont want to see anymore.
+
 
