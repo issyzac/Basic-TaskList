@@ -320,4 +320,50 @@ This show that we need to create, within our TaskController file three different
 2. `store` funtion which will be resposibe to storing data in the databse
 3. `delete` funtion which will do the deleting of the tasks we dont want to see anymore.
 
+Within your *TaskController* file and the following index function
+
+```
+/**
+ * Return all the tasks.
+ *
+ * @param  Request  $request
+ * @return Response
+ */
+public function index(Request $request){
+    
+   //Move the implementations to `get` tasks from `routes/web.php` to here
+
+}
+```
+
+Again we are going to create another function to store the tasks in the database within out controller class
+```
+/**
+ * Create a new task.
+ *
+ * @param  Request  $request
+ * @return Response
+ */
+public function store(Request $request){
+    
+   //Move the implementations to `post` tasks from `routes/web.php` to here
+
+}
+```
+
+Finally we are going to delete the task within our controller class
+
+```
+/**
+ * Destroy the given task.
+ *
+ * @param  Request  $request
+ * @param  Task  $task
+ * @return Response
+ */
+public function destroy(Request $request, Task $task)
+{
+    //
+}
+```
 
